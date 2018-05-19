@@ -1,0 +1,34 @@
+{
+  "name": "firestore-request",
+  "version": "0.0.1",
+  "description":
+    "A request library that creates requests on firestore and fulfills them via firebase function triggers",
+  "main": "index.js",
+  "repository": "https://github.com/sampsonjoliver/firestore-request.git",
+  "author": "sampsonjoliver <sampsonjoliver@outlook.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "firebase": "^4.13.1",
+    "firebase-admin": "^5.12.1",
+    "firebase-functions": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "@types/node": "^10.0.0",
+    "firebase-tools": "^3.18.4",
+    "jest": "^22.4.3",
+    "ts-jest": "^22.4.4",
+    "typescript": "^2.8.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
+  }
+}
