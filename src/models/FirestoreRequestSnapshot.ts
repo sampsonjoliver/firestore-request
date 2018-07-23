@@ -2,8 +2,8 @@ import { RequestData } from '.';
 
 export class FirestoreRequestSnapshot<T> {
   public id: string;
-  public createTime: string;
-  public updateTime: string;
+  public createTime?: string;
+  public updateTime?: string;
   public readTime: string;
   private _data: () => RequestData<T>;
 
@@ -13,8 +13,8 @@ export class FirestoreRequestSnapshot<T> {
 
   constructor(
     id: string,
-    createTime: string,
-    updateTime: string,
+    createTime: string | undefined,
+    updateTime: string | undefined,
     readTime: string,
     data: () => RequestData<T>
   ) {
