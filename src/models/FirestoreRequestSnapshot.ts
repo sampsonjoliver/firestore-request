@@ -5,9 +5,9 @@ export class FirestoreRequestSnapshot<T> {
   public createTime: string;
   public updateTime: string;
   public readTime: string;
-  private _data: () => T & RequestData;
+  private _data: () => RequestData<T>;
 
-  data(): T {
+  data(): RequestData<T> {
     return this._data();
   }
 
@@ -16,7 +16,7 @@ export class FirestoreRequestSnapshot<T> {
     createTime: string,
     updateTime: string,
     readTime: string,
-    data: () => T & RequestData
+    data: () => RequestData<T>
   ) {
     this.id = id;
     this.createTime = createTime;

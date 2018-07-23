@@ -1,11 +1,11 @@
 import * as functions from 'firebase-functions';
 
-import { FirestoreRequestSnapshot } from './FirestoreRequestSnapshot';
-import { EventContext } from 'firebase-functions';
+import { FirestoreRequestSnapshot } from '../models/FirestoreRequestSnapshot';
+import { RequestData } from '../models';
 
 type Handler = (
   params: FirestoreRequestSnapshot<any>,
-  context?: EventContext
+  context?: functions.EventContext
 ) => PromiseLike<any> | any;
 
 class UnsupportedRequestError extends Error {}
@@ -33,11 +33,13 @@ const globalRequestHandler = functions.firestore
 
     const requestParams = new FirestoreRequestSnapshot(
       snapshot.id,
-      snapshot.createTime!,
-      snapshot.updateTime!,
+      snapshot.createTime,
+      snapshot.updateTime,
       snapshot.readTime,
-      snapshot.data
+      snapshot.data as () => RequestData<any>
     );
 
     return handler(requestParams, context);
   });
+
+export { globalRequestHandler };

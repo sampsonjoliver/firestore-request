@@ -1,7 +1,6 @@
 import * as functions from 'firebase-functions';
-import { EventContext, CloudFunction } from 'firebase-functions';
 
-import { RequestData, FirestoreRequestSnapshot } from './';
+import { RequestData, FirestoreRequestSnapshot } from '.';
 import { globalParams } from '../app';
 
 export class RequestBuilder {
@@ -13,10 +12,10 @@ export class RequestBuilder {
 
   onRequest<T = any>(
     handler: (
-      params: FirestoreRequestSnapshot<T & RequestData>,
-      context?: EventContext
+      params: FirestoreRequestSnapshot<T>,
+      context?: functions.EventContext
     ) => PromiseLike<any> | any
-  ): CloudFunction<any> {
+  ): functions.CloudFunction<any> {
     return functions.firestore
       .document(
         `${globalParams.rootCollection}/root/${
@@ -24,12 +23,12 @@ export class RequestBuilder {
         }/{requestId}`
       )
       .onCreate((snapshot, context) => {
-        const requestParams = new FirestoreRequestSnapshot<T & RequestData>(
+        const requestParams = new FirestoreRequestSnapshot<T>(
           snapshot.id,
-          snapshot.createTime!,
-          snapshot.updateTime!,
+          snapshot.createTime,
+          snapshot.updateTime,
           snapshot.readTime,
-          snapshot.data as () => T & RequestData
+          snapshot.data as () => RequestData<T>
         );
 
         return handler(requestParams, context);

@@ -2,7 +2,7 @@ export type IntitialiseParams = {
   rootCollection: string;
 };
 
-export var globalParams: IntitialiseParams = {
+export let globalParams: IntitialiseParams = {
   rootCollection: 'requests'
 };
 
