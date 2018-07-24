@@ -1,4 +1,4 @@
-# react-firestore-mobx
+# firestore-request
 
 [![Typescript Version](https://img.shields.io/badge/Typescript-2.8-2f69f4.svg?style=flat)](https://www.npmjs.com/package/next)
 [![Code Style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://prettier.io/)
