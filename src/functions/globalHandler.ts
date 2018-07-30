@@ -36,7 +36,7 @@ const globalRequestHandler = functions.firestore
       snapshot.createTime,
       snapshot.updateTime,
       snapshot.readTime,
-      snapshot.data as () => RequestData<any>
+      snapshot.data() as RequestData<any>
     );
 
     return handler(requestParams, context);

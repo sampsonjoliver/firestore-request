@@ -22,16 +22,25 @@ export class RequestBuilder {
           this.triggerResource
         }/{requestId}`
       )
-      .onCreate((snapshot, context) => {
+      .onCreate(async (snapshot, context) => {
         const requestParams = new FirestoreRequestSnapshot<T>(
           snapshot.id,
           snapshot.createTime,
           snapshot.updateTime,
           snapshot.readTime,
-          snapshot.data as () => RequestData<T>
+          snapshot.data() as RequestData<T>
         );
 
-        return handler(requestParams, context);
+        try {
+          const result = await handler(requestParams, context);
+
+          await snapshot.ref.set({ status: 'complete' }, { merge: true });
+
+          return result;
+        } catch (e) {
+          await snapshot.ref.set({ status: 'failed' }, { merge: true });
+          throw e;
+        }
       });
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "firestore-request",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "A request library that creates requests on firestore and fulfills them via firebase function triggers",
   "repository": "https://github.com/sampsonjoliver/firestore-request.git",
   "author": "sampsonjoliver <sampsonjoliver@outlook.com>",

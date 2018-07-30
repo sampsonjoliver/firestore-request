@@ -5,23 +5,19 @@ export class FirestoreRequestSnapshot<T> {
   public createTime?: string;
   public updateTime?: string;
   public readTime: string;
-  private _data: () => RequestData<T>;
-
-  data(): RequestData<T> {
-    return this._data();
-  }
+  public data: RequestData<T>;
 
   constructor(
     id: string,
     createTime: string | undefined,
     updateTime: string | undefined,
     readTime: string,
-    data: () => RequestData<T>
+    data: RequestData<T>
   ) {
     this.id = id;
     this.createTime = createTime;
     this.updateTime = updateTime;
     this.readTime = readTime;
-    this._data = data;
+    this.data = data;
   }
 }
