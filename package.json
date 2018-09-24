@@ -22,14 +22,12 @@
     "publish": "yarn build && npm publish"
   },
   "dependencies": {
-    "firebase": "^5.0.0",
-    "firebase-admin": "^5.12.1",
-    "firebase-functions": "^1.0.2"
+    "firebase-admin": "^6.0.0",
+    "firebase-functions": "^2.0.0"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
     "@types/node": "^10.0.0",
-    "firebase-tools": "^3.18.4",
     "jest": "^22.4.3",
     "ts-jest": "^22.4.4",
     "typescript": "^2.8.3"
